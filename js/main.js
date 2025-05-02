@@ -40,7 +40,7 @@ function CountDownToMario(endTime, divId) {
 
     /* STEP 2: Declare any variables you'll need here
     (e.g. interval id). */
-    
+    countdown = document.getElementById(divId);
 
     /* STEP 3: Write an inner `showRemaining()` function:
         • get current time (`new Date()`)
@@ -51,11 +51,40 @@ function CountDownToMario(endTime, divId) {
         • update `document.getElementById(divId).textContent`
     */
 
+    let showRemaining = function() {
+        let timeNow = new Date();
+        let remain = end - timeNow;
+        
+        if(remain <= 0) {
+            // 
+        }
+        else {
+            const days = Math.floor(remain / _day);
+            remain %= _day;
+
+            const hrs = Math.floor(remain / _hour);
+            remain %= _hour;
+
+            const mins = Math.floor(remain / _minute);
+            remain %= _minute;
+
+            const secs = Math.floor(remain / _second);
+            remain %= _second;
+
+            countdown.innerHTML = 
+            `${days} days ${hrs} hrs ${mins} mins ${secs} secs`
+        }
+    }
+
     /* STEP 4: Call `showRemaining()` once so the timer
     appears immediately. */
 
+    showRemaining();
+
     /* STEP 5: Repeat `showRemaining()` every second
     with `setInterval`. */
+
+    setInterval(showRemaining,_second);
 }
 
 /* ======================================================
