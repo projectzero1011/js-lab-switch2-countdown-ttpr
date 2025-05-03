@@ -23,6 +23,7 @@
 ------------------------------------------------------ */
 const divId = 'countdown'
 const div = document.getElementById(divId);
+
 CountDownToMario(div.dataset.release, divId);
 
 /**
@@ -59,7 +60,8 @@ function CountDownToMario(endTime, divId) {
         
         if(remain <= 0) {
             timer.textContent = "00 days 00 hrs 00 mins 00 secs";
-
+            let heading = document.getElementById("heading");
+            heading.textContent = "Switch 2 is out!";
         }
         else {
             const days = Math.floor(remain / _day);
@@ -76,7 +78,7 @@ function CountDownToMario(endTime, divId) {
 
             const pad = n => String(n).padStart(2, "0");
 
-            countdown.textContent = 
+            timer.textContent = 
             `${pad(days)} days ${pad(hrs)} hrs 
             ${pad(mins)} mins ${pad(secs)} secs`
         }
@@ -102,7 +104,3 @@ function CountDownToMario(endTime, divId) {
    • Play sound once
        // document.getElementById('coinSound').play();
 ====================================================== */
-/* ======================================================
-   🎉  BONUS  — optional extras
-   ------------------------------------------------------
-   • Add a confetti explosion (see confetti.js) - Check js in */
