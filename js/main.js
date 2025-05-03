@@ -71,8 +71,11 @@ function CountDownToMario(endTime, divId) {
             const secs = Math.floor(remain / _second);
             remain %= _second;
 
+            const pad = n => String(n).padStart(2, "0");
+
             countdown.innerHTML = 
-            `${days} days ${hrs} hrs ${mins} mins ${secs} secs`
+            `${pad(days)} days ${pad(hrs)} hrs 
+            ${pad(mins)} mins ${pad(secs)} secs`
         }
     }
 
