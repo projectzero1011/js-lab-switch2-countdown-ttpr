@@ -21,7 +21,9 @@
    The second argument is the id of the element that
    will display the timer.
 ------------------------------------------------------ */
-CountDownToMario('06/05/2025 12:01 AM', 'countdown');
+const divId = 'countdown'
+const div = document.getElementById(divId);
+CountDownToMario(div.dataset.release, divId);
 
 /**
  *  Builds a self-updating countdown.
@@ -40,7 +42,7 @@ function CountDownToMario(endTime, divId) {
 
     /* STEP 2: Declare any variables you'll need here
     (e.g. interval id). */
-    countdown = document.getElementById(divId);
+    let timer = document.getElementById(divId);
 
     /* STEP 3: Write an inner `showRemaining()` function:
         • get current time (`new Date()`)
@@ -56,7 +58,8 @@ function CountDownToMario(endTime, divId) {
         let remain = end - timeNow;
         
         if(remain <= 0) {
-            // 
+            timer.textContent = "00 days 00 hrs 00 mins 00 secs";
+
         }
         else {
             const days = Math.floor(remain / _day);
@@ -73,7 +76,7 @@ function CountDownToMario(endTime, divId) {
 
             const pad = n => String(n).padStart(2, "0");
 
-            countdown.innerHTML = 
+            countdown.textContent = 
             `${pad(days)} days ${pad(hrs)} hrs 
             ${pad(mins)} mins ${pad(secs)} secs`
         }
@@ -93,13 +96,6 @@ function CountDownToMario(endTime, divId) {
 /* ======================================================
    📌  HINTS  — uncomment / tweak as you implement
    ------------------------------------------------------
-   • Two-digit padding helper
-       // const pad = n => String(n).padStart(2, '0');
-
-   • Read release date from HTML
-       // const div    = document.getElementById(divId);
-       // const target = new Date(div.dataset.release);
-
    • Celebration styles
        // document.body.classList.add('launched');
 
