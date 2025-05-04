@@ -21,29 +21,23 @@ function CountDownToMario(endTime, divId) {
 
     let showRemaining = function() {
         let timeNow = new Date();
-        let remain = end - timeNow;
+        let timeRemain = end - timeNow;
         
-        if(remain <= 0) {
-            timer.textContent = "00 days 00 hrs 00 mins 00 secs";
+        if(timeRemain <= 0) {
             let heading = document.getElementById("heading");
             heading.textContent = "Switch 2 is out!";
         }
-        else {
-            const days = Math.floor(remain / _day);
-            remain %= _day;
-            const hrs = Math.floor(remain / _hour);
-            remain %= _hour;
-            const mins = Math.floor(remain / _minute);
-            remain %= _minute;
-            const secs = Math.floor(remain / _second);
-            remain %= _second;
 
-            const pad = n => String(n).padStart(2, "0");
+        const days = Math.floor(timeRemain / _day);
+        const hrs = Math.floor((timeRemain % _day) / _hour);
+        const mins = Math.floor((timeRemain % _hour) / _minute);
+        const secs = Math.floor((timeRemain % _minute) / _second);
 
-            timer.textContent = 
-            `${pad(days)} days ${pad(hrs)} hrs 
-            ${pad(mins)} mins ${pad(secs)} secs`
-        }
+        const pad = n => String(n).padStart(2, "0");
+
+        timer.textContent = 
+        `${pad(days)} days ${pad(hrs)} hrs 
+        ${pad(mins)} mins ${pad(secs)} secs`
     }
 
     showRemaining();
